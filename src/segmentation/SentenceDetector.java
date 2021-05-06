@@ -12,7 +12,7 @@ import segmentation.util.StringUtil;
 
 /**
  *
- * @author win7
+ * @author Fiqih Fatwa
  */
 public class SentenceDetector implements SentenceDetectorInterface {
 

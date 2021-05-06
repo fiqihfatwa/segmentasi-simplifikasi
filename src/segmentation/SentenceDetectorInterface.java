@@ -10,7 +10,7 @@ import segmentation.util.Span;
 
 /**
  *
- * @author win7
+ * @author Fiqih Fatwa
  */
 public interface SentenceDetectorInterface {
     

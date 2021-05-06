@@ -7,7 +7,7 @@ package segmentation.EosAnalyzer;
 
 /**
  *
- * @author win
+ * @author Fiqih Fatwa
  */
 public interface AnalyzerInterface {
     

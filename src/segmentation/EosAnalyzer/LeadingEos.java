@@ -5,24 +5,15 @@
  */
 package segmentation.EosAnalyzer;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  *
  * @author Fiqih Fatwa
  */
-public class RepetitiveEos implements AnalyzerInterface {
+public class LeadingEos implements AnalyzerInterface {
 
     @Override
     public boolean shouldSplit(Model model) {
-        List<Integer> eos = model.getEosPositions();
-        
-        int i = eos.indexOf(model.getPosition());
-
-//        System.out.println("RepetitiveEos:shouldSplit => " + i);
-        
-        if (i < (eos.size()-1) && eos.get(i+1) == eos.get(i)+1) {
+        if (model.getText().substring(0, model.getPosition()).trim() == "") {
             return false;
         }
 

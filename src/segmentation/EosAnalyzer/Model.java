@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author win
+ * @author Fiqih Fatwa
  */
 public class Model {
     

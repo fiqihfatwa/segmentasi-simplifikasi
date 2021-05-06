@@ -7,7 +7,7 @@ package segmentation.util;
 
 /**
  *
- * @author win
+ * @author Fiqih Fatwa
  */
 public interface SpanInterface {
     

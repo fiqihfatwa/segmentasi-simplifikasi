@@ -8,8 +8,12 @@ package segmentation;
 import java.util.ArrayList;
 import java.util.List;
 import segmentation.EosAnalyzer.AnalyzerInterface;
+import segmentation.EosAnalyzer.EmailAddress;
+import segmentation.EosAnalyzer.LeadingEos;
 import segmentation.EosAnalyzer.Model;
+import segmentation.EosAnalyzer.NumericSeparator;
 import segmentation.EosAnalyzer.RepetitiveEos;
+import segmentation.EosAnalyzer.Tld;
 
 /**
  *
@@ -24,7 +28,14 @@ public class FuzzyEndOfSentenceScanner implements EndOfSentenceScannerInterface 
     public FuzzyEndOfSentenceScanner() {
          this.defaultScanner = new EndOfSentenceScanner();
          
+         List<String> tlds = new ArrayList<>();
+         tlds.add(".com");
+         
          this.eosAnalyzers.add(new RepetitiveEos());
+         this.eosAnalyzers.add(new LeadingEos());
+         this.eosAnalyzers.add(new EmailAddress());
+         this.eosAnalyzers.add(new NumericSeparator());
+         this.eosAnalyzers.add(new Tld(tlds));
     }
 
     @Override

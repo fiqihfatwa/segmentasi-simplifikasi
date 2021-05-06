@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author win7
+ * @author Fiqih Fatwa
  */
 public class EndOfSentenceScanner implements EndOfSentenceScannerInterface {
     
