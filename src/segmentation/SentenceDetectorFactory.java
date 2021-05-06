@@ -10,7 +10,7 @@ import segmentation.SentenceDetector;
 
 /**
  *
- * @author win7
+ * @author Fiqih Fatwa
  */
 public class SentenceDetectorFactory {
     

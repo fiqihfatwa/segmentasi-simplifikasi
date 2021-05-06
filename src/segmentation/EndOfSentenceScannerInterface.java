@@ -6,6 +6,7 @@
 package segmentation;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -13,8 +14,8 @@ import java.util.Arrays;
  */
 public interface EndOfSentenceScannerInterface {
     
-    public String getEndOfSentenceCharacters();
+    public String[] getEndOfSentenceCharacters();
     
-    public Arrays getPositions(String string);
+    public List<Integer> getPositions(String string);
     
 }

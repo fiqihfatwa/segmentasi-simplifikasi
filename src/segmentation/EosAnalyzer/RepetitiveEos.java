@@ -18,15 +18,13 @@ public class RepetitiveEos implements AnalyzerInterface {
     public boolean shouldSplit(Model model) {
         List<Integer> eos = model.getEosPositions();
         
-//        boolean i = Arrays.asList(eos).contains(model.getPosition());
-//        
-//        if(i == false){
-//            return true;
-//        }
-//        
-//        if (i < eos.length) {
-//            return false;
-//        }
+        int i = eos.indexOf(model.getPosition());
+
+//        System.out.println("RepetitiveEos:shouldSplit => " + i);
+        
+        if (i < (eos.size()-1) && eos.get(i+1) == eos.get(i)+1) {
+            return false;
+        }
 
         return true;
     }

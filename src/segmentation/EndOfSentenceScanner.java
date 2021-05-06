@@ -5,7 +5,9 @@
  */
 package segmentation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -16,23 +18,32 @@ public class EndOfSentenceScanner implements EndOfSentenceScannerInterface {
     private String[] eosChars;
     
     public EndOfSentenceScanner(String[] _eosChars) {
-        String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
-        
-        if(_eosChars.length == 0){
-            cars = {".", "?", "!"};
-        }
-        
+        this.eosChars = _eosChars;
+    }
+    
+    public EndOfSentenceScanner(){
+        String[] _eosChars = {".", "?", "!"};
         this.eosChars = _eosChars;
     }
 
     @Override
-    public String getEndOfSentenceCharacters() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String[] getEndOfSentenceCharacters() {
+        return this.eosChars;
     }
 
     @Override
-    public Arrays getPositions(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Integer> getPositions(String string) {
+
+        List<Integer> positions = new ArrayList<>();
+
+        for (int i = 0; i < string.length(); i++) {
+            if (Arrays.asList(this.eosChars).contains(Character.toString(string.charAt(i))) != false) {
+                positions.add(i);
+            }
+        }
+
+//        System.out.println("EndOfSentenceScanner:getPositions:positions => " + positions);
+        return positions; 
     }
     
 }

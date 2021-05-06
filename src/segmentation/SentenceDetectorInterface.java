@@ -5,10 +5,17 @@
  */
 package segmentation;
 
+import java.util.List;
+import segmentation.util.Span;
+
 /**
  *
  * @author win7
  */
 public interface SentenceDetectorInterface {
+    
+    public List<String> detect(String text);
+    
+    public List<Span> detectPositions(String text);
     
 }

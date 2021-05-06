@@ -57,6 +57,7 @@ public class Span implements SpanInterface {
     
     @Override
     public String getCoveredText(String text){
+//        System.out.println("Span:getCoveredText:this.start => " + this.start + " Span:getCoveredText:this.end => " + this.end);
         return text.substring(this.start, this.end);
     }
     

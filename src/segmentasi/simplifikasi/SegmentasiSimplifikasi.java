@@ -5,12 +5,13 @@
  */
 package segmentasi.simplifikasi;
 
+import java.util.List;
 import segmentation.SentenceDetector;
 import segmentation.SentenceDetectorFactory;
 
 /**
  *
- * @author win7
+ * @author Fiqih Fatwa
  */
 public class SegmentasiSimplifikasi {
 
@@ -23,8 +24,11 @@ public class SegmentasiSimplifikasi {
         SentenceDetector sentenceDetector = sentenceDetectorFactory.createSentenceDetector();
         
         String text = "Saya punya email fiqih.fatwa@gmail.com. Saya belajar NLP Bahasa Indonesia di Jl. Prof. Dr. Soepomo SH no 11. Saya pergi ke pasar. Saya punya uang 5.000. Saya punya website www.fiqih.com. IP website saya 172.1.108.104 masih local.";
+        List<String> sentences = sentenceDetector.detect(text);
         
-        System.out.println(sentenceDetector); 
+        for(String sentence : sentences){
+            System.out.println(sentence); 
+        }
     }
     
 }
