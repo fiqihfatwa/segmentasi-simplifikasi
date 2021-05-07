@@ -5,8 +5,14 @@
  */
 package segmentation;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import segmentation.EosAnalyzer.Abbreviation;
 import segmentation.EosAnalyzer.AnalyzerInterface;
 import segmentation.EosAnalyzer.EmailAddress;
 import segmentation.EosAnalyzer.LeadingEos;
@@ -28,14 +34,38 @@ public class FuzzyEndOfSentenceScanner implements EndOfSentenceScannerInterface 
     public FuzzyEndOfSentenceScanner() {
          this.defaultScanner = new EndOfSentenceScanner();
          
-         List<String> tlds = new ArrayList<>();
-         tlds.add(".com");
-         
          this.eosAnalyzers.add(new RepetitiveEos());
          this.eosAnalyzers.add(new LeadingEos());
          this.eosAnalyzers.add(new EmailAddress());
          this.eosAnalyzers.add(new NumericSeparator());
-         this.eosAnalyzers.add(new Tld(tlds));
+         
+        try {
+            Scanner fileTld = new Scanner(new File("src/segmentation/data/tld.txt"));
+            List<String> tlds = new ArrayList<>();
+            while (fileTld.hasNext()){
+                tlds.add(fileTld.next());
+            }
+            fileTld.close();
+            
+            this.eosAnalyzers.add(new Tld(tlds));
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FuzzyEndOfSentenceScanner.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        try {
+            Scanner fileAbbreviation = new Scanner(new File("src/segmentation/data/abbreviations.txt"));
+            List<String> abbreviations = new ArrayList<>();
+            while (fileAbbreviation.hasNext()){
+                abbreviations.add(fileAbbreviation.next());
+            }
+            fileAbbreviation.close();
+            
+            this.eosAnalyzers.add(new Abbreviation(abbreviations));
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FuzzyEndOfSentenceScanner.class.getName()).log(Level.SEVERE, null, ex);
+        }      
     }
 
     @Override
