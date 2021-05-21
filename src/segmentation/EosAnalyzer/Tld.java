@@ -68,6 +68,7 @@ public class Tld implements AnalyzerInterface {
     
     private boolean isValidTld(String string)
     {
+        
         for (String tld : this.tlds) {
             String regex1 = "\\"+tld+"$";
             Pattern pattern1 = Pattern.compile(regex1, Pattern.MULTILINE);
