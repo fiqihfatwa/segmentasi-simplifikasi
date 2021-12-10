@@ -5,9 +5,11 @@
  */
 package segmentasi.simplifikasi;
 
+import java.util.ArrayList;
 import java.util.List;
 import segmentation.SentenceDetector;
 import segmentation.SentenceDetectorFactory;
+import simplification.Simplification;
 
 /**
  *
@@ -23,12 +25,19 @@ public class SegmentasiSimplifikasi {
         SentenceDetectorFactory sentenceDetectorFactory = new SentenceDetectorFactory();
         SentenceDetector sentenceDetector = sentenceDetectorFactory.createSentenceDetector();
         
-        String text = "Saya punya email fiqih.fatwa@gmail.com. Saya belajar NLP Bahasa Indonesia di Jl. Prof. Dr. Soepomo SH no 11. Saya pergi ke pasar. Saya punya uang 5.000. Saya punya website www.fiqih.com. IP website saya 172.1.108.104 masih local.";
+        String text = "Saya dan kamu punya email fiqih.fatwa@gmail.com. Saya belajar NLP Bahasa Indonesia di Jl. Prof. Dr. Soepomo SH no 11. Saya pergi ke pasar. Saya punya uang 5.000. Saya punya website www.fiqih.com. IP website saya 172.1.108.104 masih local.";
         List<String> sentences = sentenceDetector.detect(text);
         
+        List<String> singleSentences = new ArrayList<>();
+        Simplification simplifikasi = new Simplification();
+        
         for(String sentence : sentences){
-            System.out.println(sentence); 
+            String singleSentence = simplifikasi.HasilSemua(sentence);
+            singleSentences.add(singleSentence);
         }
+        
+        System.out.println(singleSentences); 
+
     }
     
 }
